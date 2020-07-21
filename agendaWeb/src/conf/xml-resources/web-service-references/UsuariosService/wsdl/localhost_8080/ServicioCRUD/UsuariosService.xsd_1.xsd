@@ -20,6 +20,10 @@
 
 <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse"/>
 
+<xs:element name="logIn" type="tns:logIn"/>
+
+<xs:element name="logInResponse" type="tns:logInResponse"/>
+
 <xs:complexType name="listarID">
 <xs:sequence>
 <xs:element name="ID" type="xs:int"/>
@@ -83,6 +87,19 @@
 <xs:complexType name="agregarUsuarioResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="logIn">
+<xs:sequence>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="PASSWORD" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="logInResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuarios" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

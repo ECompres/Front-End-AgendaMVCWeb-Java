@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://Servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servicios/">
+
+<xs:element name="actualizarContacto" type="tns:actualizarContacto"/>
+
+<xs:element name="actualizarContactoResponse" type="tns:actualizarContactoResponse"/>
+
+<xs:element name="agregarContacto" type="tns:agregarContacto"/>
+
+<xs:element name="agregarContactoResponse" type="tns:agregarContactoResponse"/>
+
+<xs:element name="eliminarContacto" type="tns:eliminarContacto"/>
+
+<xs:element name="eliminarContactoResponse" type="tns:eliminarContactoResponse"/>
+
+<xs:element name="listarContactos" type="tns:listarContactos"/>
+
+<xs:element name="listarContactosResponse" type="tns:listarContactosResponse"/>
+
+<xs:element name="listarID" type="tns:listarID"/>
+
+<xs:element name="listarIDResponse" type="tns:listarIDResponse"/>
+
+<xs:complexType name="eliminarContacto">
+<xs:sequence>
+<xs:element name="ID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarContactoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contactos" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="contactos">
+<xs:sequence>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="DIRECCION" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="ID" type="xs:int"/>
+<xs:element name="ID_USUARIO" type="xs:int"/>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarContactos">
+<xs:sequence>
+<xs:element name="ID_USUARIO" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarContactosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contactos" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarID">
+<xs:sequence>
+<xs:element name="ID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contactos" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarContacto">
+<xs:sequence>
+<xs:element name="ID_USUARIO" type="xs:int"/>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="DIRECCION" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarContactoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarContacto">
+<xs:sequence>
+<xs:element name="ID" type="xs:int"/>
+<xs:element name="ID_USUARIO" type="xs:int"/>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="DIRECCION" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarContactoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

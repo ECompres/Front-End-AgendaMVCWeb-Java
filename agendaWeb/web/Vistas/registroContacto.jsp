@@ -4,8 +4,7 @@
     Author     : Emmanuel
 --%>
 
-<%@page import="ServiciosWeb.Usuarios"%>
-<%@page import="Modelos.UsuariosService"%>
+
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,69 +17,57 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </head>
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+        %>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <%HttpSession sesion = request.getSession();
-                if ((Integer) sesion.getAttribute("logged") == 1 && (Integer) sesion.getAttribute("tipoUsuario") == 0) {
-            %>
+
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <%
+                        if ((Integer) sesion.getAttribute("logged") == 1 && (Integer) sesion.getAttribute("tipoUsuario") == 0) {
+                    %>
                     <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=portalAdmin">Ver usuarios</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=add">Agregar usuarios<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <%}%>
                         <a class="nav-link" href="ContactosServlet?accion=portalUsuario">Ver contactos</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="ContactosServlet?accion=add">Agregar contacto</a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="ContactosServlet?accion=perfil">Ver perfil</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=logOut">Cerrar sesión</a>
                     </li>
             </div>
-            <%
-                }
-                else if ((Integer
 
-                ) sesion.getAttribute (
-                         
-                
-
-                
-                    "logged") != 1) {
-
-            %>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="UsuariosServlet?accion=inicio">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="UsuariosServlet?accion=add">Registrarse <span class="sr-only">(current)</span></a>
-                    </li>
-            </div>
-            <%} else {
-                    RequestDispatcher req = request.getRequestDispatcher("ContactosServlet?accion=portalUsuario");
-                    req.forward(request, response);
-                }%>
         </nav>
         <br>
         <div class="container">
-            <form action="UsuariosServlet">
+            <h1>Agregar contacto</h1>
+            <form action="ContactosServlet">
+
+                <input type="text" hidden name="id" value="<%=sesion.getAttribute("id")%>">
+
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombres</label>
-                    <input type="text" name="nombres" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su(s) nombre(s)">
+                    <input type="text" name="nombres" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Apellidos</label>
-                    <input type="text" name="apellidos" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su(s) apellido(s)">
+                    <input type="text" name="apellidos" class="form-control" id="exampleInputPassword1" placeholder="Ingrese los apellido(s)">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
@@ -88,9 +75,9 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+                    <input type="text" name="direccion" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
                 </div>
-                <input type="submit" name="accion" value="Guardar" class="btn btn-primary"></button>
+                <input type="submit" name="accion" value="Guardar" class="btn btn-primary">Registrar</button>
             </form>
         </div>
     </body>

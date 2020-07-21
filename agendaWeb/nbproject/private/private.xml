@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/web/Vistas/portalAdmin.jsp</file>
+            <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/web/Vistas/editarPerfil.jsp</file>
             <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/web/Vistas/editarUsuario.jsp</file>
-            <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/src/java/Modelos/UsuariosService.java</file>
             <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/src/java/Servlets/UsuariosServlet.java</file>
-            <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/web/Vistas/registroUsuarios.jsp</file>
+            <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/web/index.jsp</file>
+            <file>file:/C:/Users/Emmanuel/Desktop/Proyectos/Java/Agenda/front/agendaWeb/web/Vistas/portalUsuario.jsp</file>
         </group>
     </open-files>
 </project-private>

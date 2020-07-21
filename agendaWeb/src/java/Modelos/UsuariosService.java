@@ -34,16 +34,22 @@ public class UsuariosService {
         return port.actualizar(id, nombres, apellidos, email, password, tipoUSUARIO);
     }
 
-    public Usuarios listarID(int id) {
-        ServiciosWeb.UsuariosService_Service service = new ServiciosWeb.UsuariosService_Service();
-        ServiciosWeb.UsuariosService port = service.getUsuariosServicePort();
-        return port.listarID(id);
-    }
-
     public Usuarios eliminarUsuario(int id) {
         ServiciosWeb.UsuariosService_Service service = new ServiciosWeb.UsuariosService_Service();
         ServiciosWeb.UsuariosService port = service.getUsuariosServicePort();
         return port.eliminarUsuario(id);
+    }
+
+    public Usuarios logIn(java.lang.String email, java.lang.String password) {
+        ServiciosWeb.UsuariosService_Service service = new ServiciosWeb.UsuariosService_Service();
+        ServiciosWeb.UsuariosService port = service.getUsuariosServicePort();
+        return port.logIn(email, password);
+    }
+
+    public Usuarios listarID(int id) {
+        ServiciosWeb.UsuariosService_Service service = new ServiciosWeb.UsuariosService_Service();
+        ServiciosWeb.UsuariosService port = service.getUsuariosServicePort();
+        return port.listarID(id);
     }
 
 }

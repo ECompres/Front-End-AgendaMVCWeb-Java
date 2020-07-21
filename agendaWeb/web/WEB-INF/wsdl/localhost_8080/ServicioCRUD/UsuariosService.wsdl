@@ -4,11 +4,29 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:8080/ServicioCRUD/UsuariosService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="listarID">
+<part name="parameters" element="tns:listarID"/>
+</message>
+<message name="listarIDResponse">
+<part name="parameters" element="tns:listarIDResponse"/>
+</message>
+<message name="logIn">
+<part name="parameters" element="tns:logIn"/>
+</message>
+<message name="logInResponse">
+<part name="parameters" element="tns:logInResponse"/>
+</message>
 <message name="eliminarUsuario">
 <part name="parameters" element="tns:eliminarUsuario"/>
 </message>
 <message name="eliminarUsuarioResponse">
 <part name="parameters" element="tns:eliminarUsuarioResponse"/>
+</message>
+<message name="actualizar">
+<part name="parameters" element="tns:actualizar"/>
+</message>
+<message name="actualizarResponse">
+<part name="parameters" element="tns:actualizarResponse"/>
 </message>
 <message name="listarUsuarios">
 <part name="parameters" element="tns:listarUsuarios"/>
@@ -22,22 +40,22 @@
 <message name="agregarUsuarioResponse">
 <part name="parameters" element="tns:agregarUsuarioResponse"/>
 </message>
-<message name="listarID">
-<part name="parameters" element="tns:listarID"/>
-</message>
-<message name="listarIDResponse">
-<part name="parameters" element="tns:listarIDResponse"/>
-</message>
-<message name="actualizar">
-<part name="parameters" element="tns:actualizar"/>
-</message>
-<message name="actualizarResponse">
-<part name="parameters" element="tns:actualizarResponse"/>
-</message>
 <portType name="UsuariosService">
+<operation name="listarID">
+<input wsam:Action="http://Servicios/UsuariosService/listarIDRequest" message="tns:listarID"/>
+<output wsam:Action="http://Servicios/UsuariosService/listarIDResponse" message="tns:listarIDResponse"/>
+</operation>
+<operation name="logIn">
+<input wsam:Action="http://Servicios/UsuariosService/logInRequest" message="tns:logIn"/>
+<output wsam:Action="http://Servicios/UsuariosService/logInResponse" message="tns:logInResponse"/>
+</operation>
 <operation name="eliminarUsuario">
 <input wsam:Action="http://Servicios/UsuariosService/eliminarUsuarioRequest" message="tns:eliminarUsuario"/>
 <output wsam:Action="http://Servicios/UsuariosService/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse"/>
+</operation>
+<operation name="actualizar">
+<input wsam:Action="http://Servicios/UsuariosService/actualizarRequest" message="tns:actualizar"/>
+<output wsam:Action="http://Servicios/UsuariosService/actualizarResponse" message="tns:actualizarResponse"/>
 </operation>
 <operation name="listarUsuarios">
 <input wsam:Action="http://Servicios/UsuariosService/listarUsuariosRequest" message="tns:listarUsuarios"/>
@@ -47,18 +65,37 @@
 <input wsam:Action="http://Servicios/UsuariosService/agregarUsuarioRequest" message="tns:agregarUsuario"/>
 <output wsam:Action="http://Servicios/UsuariosService/agregarUsuarioResponse" message="tns:agregarUsuarioResponse"/>
 </operation>
-<operation name="listarID">
-<input wsam:Action="http://Servicios/UsuariosService/listarIDRequest" message="tns:listarID"/>
-<output wsam:Action="http://Servicios/UsuariosService/listarIDResponse" message="tns:listarIDResponse"/>
-</operation>
-<operation name="actualizar">
-<input wsam:Action="http://Servicios/UsuariosService/actualizarRequest" message="tns:actualizar"/>
-<output wsam:Action="http://Servicios/UsuariosService/actualizarResponse" message="tns:actualizarResponse"/>
-</operation>
 </portType>
 <binding name="UsuariosServicePortBinding" type="tns:UsuariosService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="listarID">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="logIn">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="eliminarUsuario">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="actualizar">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -77,24 +114,6 @@
 </output>
 </operation>
 <operation name="agregarUsuario">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="listarID">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="actualizar">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

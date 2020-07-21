@@ -18,6 +18,13 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </head>
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            if (sesion.getAttribute("logged") == "0") {
+                RequestDispatcher req = request.getRequestDispatcher("UsuariosServlet?accion=inicio");
+                req.forward(request, response);
+            }
+        %>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,23 +32,42 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <%
+                        if ((Integer) sesion.getAttribute("logged") == 1 && (Integer) sesion.getAttribute("tipoUsuario") == 0) {
+                    %>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.jsp">Iniciar sesión</a>
+                        <a class="nav-link" href="UsuariosServlet?accion=portalAdmin">Ver usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="UsuariosServlet?accion=add">Agregar usuarios<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <%}%>
+                        <a class="nav-link" href="ContactosServlet?accion=portalUsuario">Ver contactos</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="UsuariosServlet?accion=add">Registrarse <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="ContactosServlet?accion=add">Agregar contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="UsuariosServlet?accion=Perfil&id=<%=sesion.getAttribute("id")%>">Ver perfil</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="UsuariosServlet?accion=logOut">Cerrar sesión</a>
                     </li>
             </div>
+
         </nav>
         <br>
         <div class="container">
             <%
-            int id = Integer.parseInt((String)request.getAttribute("idusu"));
-            UsuariosService usu = new UsuariosService();
-            Usuarios u = usu.listarID(id);
-            
-            System.out.println(u);
+                int id = Integer.parseInt((String) request.getAttribute("idusu"));
+                UsuariosService usu = new UsuariosService();
+                Usuarios u = usu.listarID(id);
+
+                System.out.println(u);
             %>
             <form action="UsuariosServlet">
                 <label>Id</label>
@@ -58,10 +84,19 @@
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<%=u.getEMAIL()%>" aria-describedby="emailHelp" placeholder="Ingrese su Email">
                 </div>
+                <%
+                    if ((Integer) sesion.getAttribute("tipoUsuario") == 0) {
+                %>
+                <div class="form-group">
+
+                    <input type="password" hidden name="password" class="form-control" id="exampleInputPassword1" value="<%=u.getPASSWORD()%>" placeholder="Ingrese su contraseña">
+                </div>
+                <%} else {%>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" value="<%=u.getPASSWORD()%>" placeholder="Ingrese su contraseña">
                 </div>
+                <%}%>
                 <input type="submit" name="accion" value="Actualizar" class="btn btn-primary">Registrar</button>
             </form>
         </div>

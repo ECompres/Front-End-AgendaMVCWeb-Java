@@ -4,8 +4,8 @@
     Author     : Emmanuel
 --%>
 
-<%@page import="ServiciosWeb.Usuarios"%>
-<%@page import="Modelos.UsuariosService"%>
+<%@page import="ServiciosContacto.Contactos"%>
+<%@page import="Modelos.ContactosService"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,6 +20,10 @@
     <body>
         <%
             HttpSession sesion = request.getSession();
+            if (sesion.getAttribute("logged") == "0") {
+                RequestDispatcher req = request.getRequestDispatcher("UsuariosServlet?accion=inicio");
+                req.forward(request, response);
+            }
         %>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -29,17 +33,23 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
+                    <%
+                        if ((Integer) sesion.getAttribute("tipoUsuario") == 0) {
+
+                    %>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=portalAdmin">Ver usuarios<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=add">Agregar usuarios</a>
                     </li>
-                    <li class="nav-item">
+                    <%}%>
+                    <li class="nav-item active">
                         <a class="nav-link" href="ContactosServlet?accion=portalUsuario">Ver contactos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ContactosServlet?accion=add">Agregar contacto</a>
+                        <a class="nav-link" href="ContactosServlet?accion=add">Agregar contactos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=Perfil&id=<%=sesion.getAttribute("id")%>">Ver perfil</a>
@@ -51,9 +61,7 @@
         </nav>
         <br>
         <div class="container">
-
-            <h3>Bienvenido <%=sesion.getAttribute("nombres")%> </h3>
-            <h4>Listado de usuarios </h4>
+            <h3>Listado de contactos de: <%=sesion.getAttribute("nombres")%> </h3>
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
@@ -61,39 +69,29 @@
                         <th>Nombres</th>
                         <th>Apellidos</th>
                         <th>Email</th>
-                        <th>Tipo de usuario</th>
+                        <th>Dirección</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr>
-                        <%
-                            UsuariosService usu = new UsuariosService();
-                            List<Usuarios> listaUsuarios = usu.listarUsuarios();
-                            int id = (Integer) sesion.getAttribute("id");
-                            for (Usuarios u : listaUsuarios) {
-                                if (u.getID() != id) {
-
+                        <%                            ContactosService contact = new ContactosService();
+                            int idUsuario = (Integer) sesion.getAttribute("id");
+                            List<Contactos> listaUsuarios = contact.listarContactos(idUsuario);
+                            for (Contactos u : listaUsuarios) {
                         %>
                         <td><%=u.getID()%></td>
                         <td><%=u.getNOMBRES()%></td>
                         <td><%=u.getAPELLIDOS()%></td>
                         <td><%=u.getEMAIL()%></td>
-                        <td><%
-                            if (u.getTIPOUSUARIO() == 0) {
-                            %>Administrador
-                            <%} else {%>
-                            Usuario
-                            <%}%>
-                        </td>
+                        <td><%=u.getDIRECCION()%></td>
                         <td>
-                            <a href="UsuariosServlet?accion=Editar&id=<%=u.getID()%>" class="btn btn-warning">Editar</a>
-                            <a href="UsuariosServlet?accion=Borrar&id=<%=u.getID()%>" class="btn btn-danger">Borrar</a>
+                            <a href="ContactosServlet?accion=Editar&id=<%=u.getID()%>" class="btn btn-warning">Editar</a>
+                            <a href="ContactosServlet?accion=Borrar&id=<%=u.getID()%>" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
-                    <%}
-                        }%>
+                    <%}%>
                 </tbody>
             </table>
         </div>
