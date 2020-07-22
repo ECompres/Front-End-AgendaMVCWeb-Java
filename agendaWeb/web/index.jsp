@@ -50,7 +50,7 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Ingrese su contraseña" required>
                 </div>
-                <input type="submit" name="accion" value="logIn" class="btn btn-primary">Iniciar sesión</button>
+                <input type="submit" name="accion" value="logIn" class="btn btn-primary"></button>
             </form>
         </div>
     </body>

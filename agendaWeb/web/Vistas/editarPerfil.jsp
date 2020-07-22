@@ -39,10 +39,10 @@
                         <%}%>
                         <a class="nav-link" href="ContactosServlet?accion=portalUsuario">Ver contactos</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="ContactosServlet?accion=add">Agregar contacto</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="UsuariosServlet?accion=Perfil&id=<%=sesion.getAttribute("id")%>">Ver perfil</a>
                     </li>
                     <li class="nav-item">
@@ -61,7 +61,6 @@
                 System.out.println(u);
             %>
             <form action="UsuariosServlet">
-                <label>Id</label>
                 <input type="text" name="txtid" hidden readonly="" value = "<%=u.getID()%>">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombres</label>
@@ -79,6 +78,7 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" value="<%=u.getPASSWORD()%>" placeholder="Ingrese su contraseña">
                 </div>
+                <input type="text" hidden name="tipoUsuario" readonly="" value = "<%=u.getTIPOUSUARIO()%>">
                 <input type="submit" name="accion" value="Actualizar" class="btn btn-primary"></input>
             </form>
         </div>

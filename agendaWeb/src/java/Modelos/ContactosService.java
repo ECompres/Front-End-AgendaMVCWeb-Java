@@ -22,12 +22,6 @@ public class ContactosService {
         return port.listarContactos(idUSUARIO);
     }
 
-    public Contactos listarID(int id) {
-        ServiciosContacto.ContactosService_Service service = new ServiciosContacto.ContactosService_Service();
-        ServiciosContacto.ContactosService port = service.getContactosServicePort();
-        return port.listarID(id);
-    }
-
     public String agregarContacto(int idUSUARIO, java.lang.String nombres, java.lang.String apellidos, java.lang.String email, java.lang.String direccion) {
         ServiciosContacto.ContactosService_Service service = new ServiciosContacto.ContactosService_Service();
         ServiciosContacto.ContactosService port = service.getContactosServicePort();
@@ -44,6 +38,12 @@ public class ContactosService {
         ServiciosContacto.ContactosService_Service service = new ServiciosContacto.ContactosService_Service();
         ServiciosContacto.ContactosService port = service.getContactosServicePort();
         return port.eliminarContacto(id);
+    }
+
+    public Contactos listarContactoID(int id) {
+        ServiciosContacto.ContactosService_Service service = new ServiciosContacto.ContactosService_Service();
+        ServiciosContacto.ContactosService port = service.getContactosServicePort();
+        return port.listarContactoID(id);
     }
 
 }

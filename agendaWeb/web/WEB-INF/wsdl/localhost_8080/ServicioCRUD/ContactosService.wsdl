@@ -4,11 +4,23 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:8080/ServicioCRUD/ContactosService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="actualizarContacto">
+<part name="parameters" element="tns:actualizarContacto"/>
+</message>
+<message name="actualizarContactoResponse">
+<part name="parameters" element="tns:actualizarContactoResponse"/>
+</message>
 <message name="eliminarContacto">
 <part name="parameters" element="tns:eliminarContacto"/>
 </message>
 <message name="eliminarContactoResponse">
 <part name="parameters" element="tns:eliminarContactoResponse"/>
+</message>
+<message name="listarContactoID">
+<part name="parameters" element="tns:listarContactoID"/>
+</message>
+<message name="listarContactoIDResponse">
+<part name="parameters" element="tns:listarContactoIDResponse"/>
 </message>
 <message name="listarContactos">
 <part name="parameters" element="tns:listarContactos"/>
@@ -22,22 +34,18 @@
 <message name="agregarContactoResponse">
 <part name="parameters" element="tns:agregarContactoResponse"/>
 </message>
-<message name="actualizarContacto">
-<part name="parameters" element="tns:actualizarContacto"/>
-</message>
-<message name="actualizarContactoResponse">
-<part name="parameters" element="tns:actualizarContactoResponse"/>
-</message>
-<message name="listarID">
-<part name="parameters" element="tns:listarID"/>
-</message>
-<message name="listarIDResponse">
-<part name="parameters" element="tns:listarIDResponse"/>
-</message>
 <portType name="ContactosService">
+<operation name="actualizarContacto">
+<input wsam:Action="http://Servicios/ContactosService/actualizarContactoRequest" message="tns:actualizarContacto"/>
+<output wsam:Action="http://Servicios/ContactosService/actualizarContactoResponse" message="tns:actualizarContactoResponse"/>
+</operation>
 <operation name="eliminarContacto">
 <input wsam:Action="http://Servicios/ContactosService/eliminarContactoRequest" message="tns:eliminarContacto"/>
 <output wsam:Action="http://Servicios/ContactosService/eliminarContactoResponse" message="tns:eliminarContactoResponse"/>
+</operation>
+<operation name="listarContactoID">
+<input wsam:Action="http://Servicios/ContactosService/listarContactoIDRequest" message="tns:listarContactoID"/>
+<output wsam:Action="http://Servicios/ContactosService/listarContactoIDResponse" message="tns:listarContactoIDResponse"/>
 </operation>
 <operation name="listarContactos">
 <input wsam:Action="http://Servicios/ContactosService/listarContactosRequest" message="tns:listarContactos"/>
@@ -47,18 +55,28 @@
 <input wsam:Action="http://Servicios/ContactosService/agregarContactoRequest" message="tns:agregarContacto"/>
 <output wsam:Action="http://Servicios/ContactosService/agregarContactoResponse" message="tns:agregarContactoResponse"/>
 </operation>
-<operation name="actualizarContacto">
-<input wsam:Action="http://Servicios/ContactosService/actualizarContactoRequest" message="tns:actualizarContacto"/>
-<output wsam:Action="http://Servicios/ContactosService/actualizarContactoResponse" message="tns:actualizarContactoResponse"/>
-</operation>
-<operation name="listarID">
-<input wsam:Action="http://Servicios/ContactosService/listarIDRequest" message="tns:listarID"/>
-<output wsam:Action="http://Servicios/ContactosService/listarIDResponse" message="tns:listarIDResponse"/>
-</operation>
 </portType>
 <binding name="ContactosServicePortBinding" type="tns:ContactosService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="actualizarContacto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="eliminarContacto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="listarContactoID">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -77,24 +95,6 @@
 </output>
 </operation>
 <operation name="agregarContacto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="actualizarContacto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="listarID">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

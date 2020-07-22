@@ -12,13 +12,13 @@
 
 <xs:element name="eliminarContactoResponse" type="tns:eliminarContactoResponse"/>
 
+<xs:element name="listarContactoID" type="tns:listarContactoID"/>
+
+<xs:element name="listarContactoIDResponse" type="tns:listarContactoIDResponse"/>
+
 <xs:element name="listarContactos" type="tns:listarContactos"/>
 
 <xs:element name="listarContactosResponse" type="tns:listarContactosResponse"/>
-
-<xs:element name="listarID" type="tns:listarID"/>
-
-<xs:element name="listarIDResponse" type="tns:listarIDResponse"/>
 
 <xs:complexType name="eliminarContacto">
 <xs:sequence>
@@ -55,31 +55,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="listarID">
+<xs:complexType name="listarContactoID">
 <xs:sequence>
 <xs:element name="ID" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="listarIDResponse">
+<xs:complexType name="listarContactoIDResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:contactos" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="agregarContacto">
-<xs:sequence>
-<xs:element name="ID_USUARIO" type="xs:int"/>
-<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
-<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
-<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
-<xs:element name="DIRECCION" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="agregarContactoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -95,6 +79,22 @@
 </xs:complexType>
 
 <xs:complexType name="actualizarContactoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarContacto">
+<xs:sequence>
+<xs:element name="ID_USUARIO" type="xs:int"/>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="DIRECCION" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarContactoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>

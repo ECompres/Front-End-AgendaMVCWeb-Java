@@ -46,7 +46,7 @@
                         <a class="nav-link" href="ContactosServlet?accion=add">Agregar contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ContactosServlet?accion=perfil">Ver perfil</a>
+                        <a class="nav-link" href="UsuariosServlet?accion=Perfil&id=<%=sesion.getAttribute("id")%>">Ver perfil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="UsuariosServlet?accion=logOut">Cerrar sesión</a>
@@ -74,10 +74,10 @@
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Email">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="exampleInputPassword1">Direccion</label>
                     <input type="text" name="direccion" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
                 </div>
-                <input type="submit" name="accion" value="Guardar" class="btn btn-primary">Registrar</button>
+                <input type="submit" name="accion" value="Guardar" class="btn btn-primary"></button>
             </form>
         </div>
     </body>

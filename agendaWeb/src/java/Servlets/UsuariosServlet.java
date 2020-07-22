@@ -90,30 +90,34 @@ public class UsuariosServlet extends HttpServlet {
             request.setAttribute("idusu", request.getParameter("id"));
 
         } else if (accion.equals("Actualizar")) {
+
             int id = Integer.parseInt(request.getParameter("txtid"));
             String nombres = request.getParameter("nombres");
             String apellidos = request.getParameter("apellidos");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            int userType = (Integer) session.getAttribute("tipoUsuario");
+            int userType = Integer.parseInt(request.getParameter("tipoUsuario"));
+
             usuarioService.actualizar(id, nombres, apellidos, email, password, userType);
-            if ((Integer) session.getAttribute("tipoUsuario") == 0) {
-                acceso = listarUsuario;
-            } else {
-                session.invalidate();
-                acceso = inicio;
-            }
+
+            acceso = inicio;
+
         } else if (accion.equals("Borrar")) {
+
             int id = Integer.parseInt(request.getParameter("id"));
             usuarioService.eliminarUsuario(id);
             acceso = listarUsuario;
 
         } else if (accion.equals("Perfil")) {
+
             acceso = editMe;
             request.setAttribute("idEdit", request.getParameter("id"));
+
         } else if (accion.equals("logOut")) {
+
             session.setAttribute("logged", 0);
             acceso = inicio;
+
         } else {
             acceso = inicio;
         }

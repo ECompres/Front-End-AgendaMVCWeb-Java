@@ -70,8 +70,7 @@
                 System.out.println(u);
             %>
             <form action="UsuariosServlet">
-                <label>Id</label>
-                <input type="text" name="txtid" readonly="" value = "<%=u.getID()%>">
+                <input hidden type="text" name="txtid" readonly="" value = "<%=u.getID()%>">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombres</label>
                     <input type="text" name="nombres" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=u.getNOMBRES()%>" placeholder="Ingrese su(s) nombre(s)">
@@ -84,6 +83,7 @@
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<%=u.getEMAIL()%>" aria-describedby="emailHelp" placeholder="Ingrese su Email">
                 </div>
+
                 <%
                     if ((Integer) sesion.getAttribute("tipoUsuario") == 0) {
                 %>
@@ -96,8 +96,10 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" value="<%=u.getPASSWORD()%>" placeholder="Ingrese su contraseña">
                 </div>
+                
                 <%}%>
-                <input type="submit" name="accion" value="Actualizar" class="btn btn-primary">Registrar</button>
+                <input type="text" hidden name="tipoUsuario" readonly="" value = "<%=u.getTIPOUSUARIO()%>">
+                <input type="submit" name="accion" value="Actualizar" class="btn btn-primary"></button>
             </form>
         </div>
     </body>

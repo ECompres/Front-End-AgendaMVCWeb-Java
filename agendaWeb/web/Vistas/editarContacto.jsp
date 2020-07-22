@@ -66,7 +66,7 @@ Author     : Emmanuel
                 
                 int id = Integer.parseInt((String) request.getAttribute("idusu"));
                 ContactosService usu = new ContactosService();
-                Contactos u = usu.listarID(id);
+                Contactos u = usu.listarContactoID(id);
 
                 System.out.println(u);
             %>
