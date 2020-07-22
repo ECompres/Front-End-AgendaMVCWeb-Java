@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://Servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servicios/">
+
+<xs:element name="actualizar" type="tns:actualizar"/>
+
+<xs:element name="actualizarResponse" type="tns:actualizarResponse"/>
+
+<xs:element name="agregarUsuario" type="tns:agregarUsuario"/>
+
+<xs:element name="agregarUsuarioResponse" type="tns:agregarUsuarioResponse"/>
+
+<xs:element name="eliminarUsuario" type="tns:eliminarUsuario"/>
+
+<xs:element name="eliminarUsuarioResponse" type="tns:eliminarUsuarioResponse"/>
+
+<xs:element name="listarID" type="tns:listarID"/>
+
+<xs:element name="listarIDResponse" type="tns:listarIDResponse"/>
+
+<xs:element name="listarUsuarios" type="tns:listarUsuarios"/>
+
+<xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse"/>
+
+<xs:element name="logIn" type="tns:logIn"/>
+
+<xs:element name="logInResponse" type="tns:logInResponse"/>
+
+<xs:complexType name="listarID">
+<xs:sequence>
+<xs:element name="ID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuarios" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="usuarios">
+<xs:sequence>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="ID" type="xs:int"/>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+<xs:element name="PASSWORD" type="xs:string" minOccurs="0"/>
+<xs:element name="TIPO_USUARIO" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizar">
+<xs:sequence>
+<xs:element name="ID" type="xs:int"/>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="PASSWORD" type="xs:string" minOccurs="0"/>
+<xs:element name="TIPO_USUARIO" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarUsuarios">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listarUsuariosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuarios" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarUsuario">
+<xs:sequence>
+<xs:element name="NOMBRES" type="xs:string" minOccurs="0"/>
+<xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="PASSWORD" type="xs:string" minOccurs="0"/>
+<xs:element name="TIPO_USUARIO" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="logIn">
+<xs:sequence>
+<xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+<xs:element name="PASSWORD" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="logInResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuarios" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarUsuario">
+<xs:sequence>
+<xs:element name="ID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuarios" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
